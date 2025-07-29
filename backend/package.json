@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "askiq-backend",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,15 @@
     "test-search": "ts-node src/test-search.ts",
     "test-openai": "ts-node src/test-openai-embeddings.ts"
   },
-  "keywords": [],
+  "keywords": [
+    "ai",
+    "rag",
+    "chatbot",
+    "vector-search"
+  ],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "AskIQ backend API with RAG capabilities",
   "dependencies": {
     "@chroma-core/default-embed": "^0.1.8",
     "@supabase/supabase-js": "^2.52.1",
@@ -19,7 +24,8 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
-    "openai": "^5.10.2"
+    "openai": "^5.10.2",
+    "requirements": "^2.0.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",

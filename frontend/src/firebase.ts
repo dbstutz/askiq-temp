@@ -17,9 +17,9 @@ const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
 
-// Restrict sign-in to Stanford accounts
-provider.setCustomParameters({
-  hd: "stanford.edu"
-});
+// Allow any Google account to sign in
+// provider.setCustomParameters({
+//   hd: "stanford.edu"
+// });
 
 export { auth, provider, signInWithPopup }; 

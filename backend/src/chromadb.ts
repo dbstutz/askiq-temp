@@ -9,7 +9,7 @@ class ChromaDBService {
   private client: CloudClient;
   private collection: Collection | null = null;
   private openai: OpenAI;
-  private readonly COLLECTION_NAME = 'campusqa_vectors';
+  private readonly COLLECTION_NAME = 'askiq_vectors';
 
   constructor() {
     // Initialize OpenAI client

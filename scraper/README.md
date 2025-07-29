@@ -1,6 +1,6 @@
-# CampusQA Scraper
+# AskIQ Scraper
 
-This directory contains the web scraping components for the CampusQA project.
+This directory contains the web scraping components for the AskIQ project.
 
 ## Setup
 
@@ -18,7 +18,7 @@ python crawl_sitemap.py <sitemap_url> <category> <title>
 
 Example:
 ```bash
-python crawl_sitemap.py "https://majors.stanford.edu/sitemap.xml" "academics" "Stanford Majors"
+python crawl_sitemap.py "https://example.com/sitemap.xml" "technology" "Tech Documentation"
 ```
 
 ## Files

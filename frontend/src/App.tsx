@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { auth, provider, signInWithPopup } from './firebase';
 import { onAuthStateChanged, signOut, getRedirectResult } from 'firebase/auth';
 import type { User } from 'firebase/auth';
-import stanLogo from './assets/logo/campusqa-logo.png';
+import askiqLogo from './assets/logo/askiq-logo.png';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -88,7 +88,7 @@ function App() {
       // Refetch history
       await fetchHistory(user.email);
     } catch (err) {
-      setAnswer('Error contacting CampusQA backend.');
+      setAnswer('Error contacting AskIQ backend.');
     } finally {
       setLoading(false);
     }
@@ -132,9 +132,9 @@ function App() {
     return (
       <div className="min-h-screen w-full flex flex-col items-center justify-center bg-neutral-50 font-serif">
         <div className="w-full max-w-md mx-auto bg-white p-10 rounded-2xl shadow-2xl border border-neutral-200 flex flex-col items-center">
-        <img src={stanLogo} alt="AskStan Logo" className="w-20 h-30 mb-4 object-contain" />
-          <h1 className="text-4xl font-extrabold mb-2 text-[#8C1515] drop-shadow-lg" style={{color:'#1a1a1a'}}>CampusQA</h1>
-          <p className="mb-8 text-[#8C1515]/80 font-medium" style={{color:'#1a1a1a'}}>Your Stanford AI Campus Assistant</p>
+        <img src={askiqLogo} alt="AskIQ Logo" className="w-20 h-30 mb-4 object-contain" />
+          <h1 className="text-4xl font-extrabold mb-2 text-[#8C1515] drop-shadow-lg" style={{color:'#1a1a1a'}}>AskIQ</h1>
+          <p className="mb-8 text-[#8C1515]/80 font-medium" style={{color:'#1a1a1a'}}>Your AI Knowledge Assistant</p>
           <button
             onClick={handleSignIn}
             className="bg-[#8C1515] py-3 px-6 rounded font-bold text-lg hover:bg-[#A62626] transition mt-2 text-white"
@@ -143,7 +143,7 @@ function App() {
             Sign in
           </button>
         </div>
-        <footer className="mt-12 text-neutral-400 text-sm opacity-80">Not affiliated with Stanford University yet, but for the people.</footer>
+        <footer className="mt-12 text-neutral-400 text-sm opacity-80">Powered by AI for intelligent conversations.</footer>
       </div>
     );
   }
@@ -161,14 +161,14 @@ function App() {
         </button>
       </div>
       <div className="flex flex-col items-center w-full px-4">
-        <img src={stanLogo} alt="AskStan Logo" className="w-20 h-30 mb-4 object-contain" />
-        <h1 className="text-5xl font-extrabold mb-2 text-[#8C1515] drop-shadow-lg" style={{color:'#1a1a1a'}}>CampusQA</h1>
-        <p className="mb-8 text-lg text-[#8C1515]/80 font-medium" style={{color:'#1a1a1a'}}>Your Stanford AI Campus Assistant</p>
+        <img src={askiqLogo} alt="AskIQ Logo" className="w-20 h-30 mb-4 object-contain" />
+        <h1 className="text-5xl font-extrabold mb-2 text-[#8C1515] drop-shadow-lg" style={{color:'#1a1a1a'}}>AskIQ</h1>
+        <p className="mb-8 text-lg text-[#8C1515]/80 font-medium" style={{color:'#1a1a1a'}}>Your AI Knowledge Assistant</p>
         <form onSubmit={handleAsk} className="w-full max-w-2xl mx-auto flex flex-col gap-4 bg-white p-8 rounded-2xl shadow-2xl border border-neutral-200">
           <input
             type="text"
             className="border border-[#8C1515] rounded px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#8C1515] text-lg bg-white"
-            placeholder="Ask a question about Stanford..."
+            placeholder="Ask any question..."
             value={question}
             onChange={e => setQuestion(e.target.value)}
             required
@@ -179,12 +179,12 @@ function App() {
             style={{background:'#8C1515', color:'#fff', border:'none'}}
             disabled={loading}
           >
-            {loading ? 'Asking...' : 'Ask CampusQA'}
+            {loading ? 'Asking...' : 'Ask AskIQ'}
           </button>
         </form>
         {answer && (
           <div className="mt-8 w-full max-w-2xl mx-auto bg-neutral-100 border border-[#8C1515] rounded-xl p-6 shadow-lg text-lg" style={{color:'#1a1a1a'}}>
-            <span className="block mb-2 font-bold text-[#8C1515]">Stan says:</span> 
+            <span className="block mb-2 font-bold text-[#8C1515]">AI says:</span> 
             <div className="whitespace-pre-wrap">{answer}</div>
           </div>
         )}
@@ -206,7 +206,7 @@ function App() {
                   <li key={h.id}>
                     <div className="text-sm text-neutral-500 mb-1">{new Date(h.timestamp).toLocaleString()}</div>
                     <div><span className="font-semibold">You:</span> {h.question}</div>
-                    <div><span className="font-semibold text-[#8C1515]">Stan:</span> {h.answer}</div>
+                    <div><span className="font-semibold text-[#8C1515]">AI:</span> {h.answer}</div>
                   </li>
                 ))}
               </ul>
@@ -214,7 +214,7 @@ function App() {
           )}
         </div>
       </div>
-      <footer className="mt-12 text-neutral-400 text-sm opacity-80">Not affiliated with Stanford University yet, but for the people.</footer>
+      <footer className="mt-12 text-neutral-400 text-sm opacity-80">Powered by AI for intelligent conversations.</footer>
     </div>
   );
 }

@@ -27,7 +27,7 @@ app.post('/api/ask', async (req, res) => {
     res.setHeader('Connection', 'keep-alive');
     
     try {
-      // Perform vector search to find relevant Stanford information
+      // Perform vector search to find relevant information
       let relevantInfo = '';
       
       try {
@@ -53,17 +53,17 @@ app.post('/api/ask', async (req, res) => {
           apiKey: process.env.OPENAI_API_KEY
         });
         
-        const systemPrompt = `You are CampusQA, a helpful AI assistant for Stanford University. You have access to Stanford-specific information to answer questions accurately and helpfully.
+        const systemPrompt = `You are AskIQ, a helpful AI assistant. You have access to relevant information to answer questions accurately and helpfully.
 
 IMPORTANT GUIDELINES:
-- Only answer questions that are relevant to Stanford students
+- Answer questions based on the provided information
 - If the provided information doesn't answer the question, say you don't have enough information
-- Be friendly, helpful, and accurate, like an upperclass mentor
+- Be friendly, helpful, and accurate
 - Keep responses concise but informative`;
 
         const userPrompt = relevantInfo 
-          ? `Question: ${question}\n\nRelevant Stanford Information: ${relevantInfo}\n\nPlease answer the question using the provided information.`
-          : `Question: ${question}\n\nI don't have specific Stanford information for this question. Please respond appropriately.`;
+          ? `Question: ${question}\n\nRelevant Information: ${relevantInfo}\n\nPlease answer the question using the provided information.`
+          : `Question: ${question}\n\nI don't have specific information for this question. Please respond appropriately.`;
 
         const stream = await openai.chat.completions.create({
           model: 'gpt-4o-mini',
@@ -88,8 +88,8 @@ IMPORTANT GUIDELINES:
       } catch (openaiError) {
         console.error('OpenAI API error:', openaiError);
         const fallbackAnswer = relevantInfo 
-          ? `Based on Stanford information: ${relevantInfo}\n\nThis is a fallback response. The AI service is temporarily unavailable.`
-          : 'I\'m sorry, I don\'t have specific information about that Stanford topic, and the AI service is temporarily unavailable.';
+          ? `Based on available information: ${relevantInfo}\n\nThis is a fallback response. The AI service is temporarily unavailable.`
+          : 'I\'m sorry, I don\'t have specific information about that topic, and the AI service is temporarily unavailable.';
         
         fullAnswer = fallbackAnswer;
         res.write(fallbackAnswer);
@@ -113,7 +113,7 @@ IMPORTANT GUIDELINES:
   } else {
     // Non-streaming response (JSON)
     try {
-      // Perform vector search to find relevant Stanford information
+      // Perform vector search to find relevant information
       let relevantInfo = '';
       let searchResults = null;
       
@@ -140,17 +140,17 @@ IMPORTANT GUIDELINES:
           apiKey: process.env.OPENAI_API_KEY
         });
         
-        const systemPrompt = `You are CampusQA, a helpful AI assistant for Stanford University. You have access to Stanford-specific information to answer questions accurately and helpfully.
+        const systemPrompt = `You are AskIQ, a helpful AI assistant. You have access to relevant information to answer questions accurately and helpfully.
 
 IMPORTANT GUIDELINES:
-- Only answer questions that are relevant to Stanford students
+- Answer questions based on the provided information
 - If the provided information doesn't answer the question, say you don't have enough information
-- Be friendly, helpful, and accurate, like an upperclass mentor
+- Be friendly, helpful, and accurate
 - Keep responses concise but informative`;
 
         const userPrompt = relevantInfo 
-          ? `Question: ${question}\n\nRelevant Stanford Information: ${relevantInfo}\n\nPlease answer the question using the provided information.`
-          : `Question: ${question}\n\nI don't have specific Stanford information for this question. Please respond appropriately.`;
+          ? `Question: ${question}\n\nRelevant Information: ${relevantInfo}\n\nPlease answer the question using the provided information.`
+          : `Question: ${question}\n\nI don't have specific information for this question. Please respond appropriately.`;
 
         const completion = await openai.chat.completions.create({
           model: 'gpt-4o-mini',
@@ -166,8 +166,8 @@ IMPORTANT GUIDELINES:
       } catch (openaiError) {
         console.error('OpenAI API error:', openaiError);
         answer = relevantInfo 
-          ? `Based on Stanford information: ${relevantInfo}\n\nThis is a fallback response. The AI service is temporarily unavailable.`
-          : 'I\'m sorry, I don\'t have specific information about that Stanford topic, and the AI service is temporarily unavailable.';
+          ? `Based on available information: ${relevantInfo}\n\nThis is a fallback response. The AI service is temporarily unavailable.`
+          : 'I\'m sorry, I don\'t have specific information about that topic, and the AI service is temporarily unavailable.';
       }
       
       // Store in Supabase
@@ -248,7 +248,7 @@ async function startServer() {
     await chromaDB.initialize();
     await supabase.initialize();
     app.listen(PORT, () => {
-      console.log(`CampusQA backend running on port ${PORT}`);
+      console.log(`AskIQ backend running on port ${PORT}`);
       console.log('ChromaDB vector database ready');
       console.log('Supabase chat history ready');
     });

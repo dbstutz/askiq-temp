@@ -21,57 +21,57 @@ async function testOpenAIEmbeddings() {
     // Initialize the service
     await chromaService.initialize();
     
-    // Test documents with various Stanford-related content
+    // Test documents with various knowledge content
     const testDocuments = [
       {
-        id: 'stanford-overview',
-        text: "Stanford University is a private research university in Stanford, California. It was founded in 1885 by Leland and Jane Stanford in memory of their only child, Leland Stanford Jr. The university is known for its academic achievements, wealth, and close proximity to Silicon Valley.",
-        metadata: { category: 'university_info', topic: 'overview' }
+        id: 'ai-overview',
+        text: "Artificial Intelligence (AI) is a branch of computer science that aims to create intelligent machines that can perform tasks that typically require human intelligence. These tasks include learning, reasoning, problem-solving, perception, and language understanding. AI has applications in various fields including healthcare, finance, transportation, and entertainment.",
+        metadata: { category: 'technology', topic: 'ai_overview' }
       },
       {
-        id: 'stanford-admissions',
-        text: "Stanford University has one of the most competitive admission processes in the world. The acceptance rate is typically around 4-5%. Applicants are evaluated based on academic excellence, extracurricular activities, leadership potential, and personal qualities. The university looks for students who will contribute to the campus community.",
-        metadata: { category: 'admissions', topic: 'process' }
+        id: 'machine-learning',
+        text: "Machine Learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed. It uses algorithms to identify patterns in data and make predictions or decisions. Common types include supervised learning, unsupervised learning, and reinforcement learning.",
+        metadata: { category: 'technology', topic: 'machine_learning' }
       },
       {
-        id: 'stanford-academics',
-        text: "Stanford offers undergraduate and graduate programs across seven schools: Business, Earth Sciences, Education, Engineering, Humanities and Sciences, Law, and Medicine. The university is particularly renowned for its programs in computer science, engineering, business, and medicine. Students can choose from over 90 majors and minors.",
-        metadata: { category: 'academics', topic: 'programs' }
+        id: 'data-science',
+        text: "Data Science is an interdisciplinary field that uses scientific methods, processes, algorithms, and systems to extract knowledge and insights from structured and unstructured data. It combines statistics, computer science, and domain expertise to solve complex problems and drive decision-making.",
+        metadata: { category: 'technology', topic: 'data_science' }
       },
       {
-        id: 'stanford-campus',
-        text: "Stanford's campus spans 8,180 acres in the heart of Silicon Valley. The main campus features distinctive Mission Revival architecture with red tile roofs and sandstone buildings. Notable landmarks include the Main Quad, Memorial Church, Hoover Tower, and the Cantor Arts Center. The campus is known for its beautiful palm-lined driveways and open spaces.",
-        metadata: { category: 'campus', topic: 'facilities' }
+        id: 'web-development',
+        text: "Web development involves creating websites and web applications using various technologies like HTML, CSS, JavaScript, and backend frameworks. Modern web development includes frontend frameworks like React, Vue, and Angular, as well as backend technologies like Node.js, Python, and databases.",
+        metadata: { category: 'technology', topic: 'web_development' }
       },
       {
-        id: 'stanford-research',
-        text: "Stanford is a leading research institution with over $1 billion in annual research funding. The university is home to numerous research centers and institutes, including the Stanford Research Institute (SRI), SLAC National Accelerator Laboratory, and the Hoover Institution. Research areas include artificial intelligence, renewable energy, medicine, and social sciences.",
-        metadata: { category: 'research', topic: 'institutes' }
+        id: 'cloud-computing',
+        text: "Cloud computing provides on-demand access to computing resources over the internet. It includes services like Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS). Major cloud providers include AWS, Google Cloud, and Microsoft Azure.",
+        metadata: { category: 'technology', topic: 'cloud_computing' }
       },
       {
-        id: 'stanford-financial-aid',
-        text: "Stanford is committed to making education accessible through generous financial aid. The university meets 100% of demonstrated financial need for admitted students. Families with incomes below $150,000 pay no tuition, and families with incomes below $75,000 pay no tuition, room, or board. Over 60% of students receive some form of financial assistance.",
-        metadata: { category: 'financial_aid', topic: 'policies' }
+        id: 'cybersecurity',
+        text: "Cybersecurity involves protecting computer systems, networks, and data from digital attacks, damage, or unauthorized access. It includes practices like encryption, authentication, network security, and incident response. With increasing digital threats, cybersecurity has become crucial for organizations and individuals.",
+        metadata: { category: 'technology', topic: 'cybersecurity' }
       },
       {
-        id: 'stanford-student-life',
-        text: "Stanford offers a vibrant student life with over 600 student organizations, including cultural groups, academic clubs, and recreational activities. The university has a strong athletic tradition with 36 varsity sports teams competing in the Pac-12 Conference. Greek life, residential communities, and the Stanford Band are integral parts of campus culture.",
-        metadata: { category: 'student_life', topic: 'activities' }
+        id: 'blockchain',
+        text: "Blockchain is a distributed ledger technology that enables secure, transparent, and tamper-proof record-keeping. It's the foundation for cryptocurrencies like Bitcoin and Ethereum, but also has applications in supply chain management, voting systems, and digital identity verification.",
+        metadata: { category: 'technology', topic: 'blockchain' }
       },
       {
-        id: 'stanford-alumni',
-        text: "Stanford has produced numerous notable alumni including founders of Google, Netflix, Instagram, and other major tech companies. The university's alumni network is one of the most powerful in the world, particularly in technology and entrepreneurship. Stanford graduates have won Nobel Prizes, Pulitzer Prizes, and other prestigious awards.",
-        metadata: { category: 'alumni', topic: 'achievements' }
+        id: 'internet-of-things',
+        text: "The Internet of Things (IoT) refers to the network of physical devices embedded with sensors, software, and connectivity that enables them to collect and exchange data. IoT applications include smart homes, industrial automation, healthcare monitoring, and environmental sensing.",
+        metadata: { category: 'technology', topic: 'iot' }
       },
       {
-        id: 'stanford-location',
-        text: "Stanford is located in the San Francisco Bay Area, specifically in the city of Stanford, California. The university is situated between San Francisco and San Jose, making it easily accessible to major tech companies, venture capital firms, and cultural attractions. The proximity to Silicon Valley provides unique opportunities for internships and career development.",
-        metadata: { category: 'location', topic: 'geography' }
+        id: 'software-engineering',
+        text: "Software engineering is the systematic approach to developing, testing, and maintaining software applications. It involves methodologies like Agile and DevOps, version control systems, testing frameworks, and deployment strategies to create reliable and scalable software solutions.",
+        metadata: { category: 'technology', topic: 'software_engineering' }
       },
       {
-        id: 'stanford-history',
-        text: "Stanford University was established in 1885 by California Governor Leland Stanford and his wife, Jane Stanford. The university opened its doors in 1891 with 555 students. The Stanford family's vision was to create a university that would prepare students for practical success in life while contributing to the public welfare.",
-        metadata: { category: 'history', topic: 'founding' }
+        id: 'database-systems',
+        text: "Database systems are organized collections of data that can be easily accessed, managed, and updated. They include relational databases like MySQL and PostgreSQL, NoSQL databases like MongoDB, and specialized systems for big data processing and analytics.",
+        metadata: { category: 'technology', topic: 'databases' }
       }
     ];
     
@@ -85,16 +85,16 @@ async function testOpenAIEmbeddings() {
     
     // Test various search queries
     const searchQueries = [
-      "How do I get into Stanford?",
-      "What is the campus like?",
-      "Tell me about financial aid",
-      "What research opportunities are available?",
-      "How much does Stanford cost?",
-      "What majors can I study?",
-      "Where is Stanford located?",
-      "What are the admission requirements?",
-      "Tell me about student organizations",
-      "What famous people went to Stanford?",
+      "What is artificial intelligence?",
+      "How does machine learning work?",
+      "Tell me about data science",
+      "What is web development?",
+      "Explain cloud computing",
+      "How to secure computer systems?",
+      "What is blockchain technology?",
+      "Tell me about IoT devices",
+      "What is software engineering?",
+      "How do databases work?",
     ];
     
     console.log('\n🔍 Testing semantic search with various queries...\n');

@@ -113,7 +113,7 @@ def get_urls(sitemap_url: str):
 
 
 async def main():
-    # urls = get_urls("https://majors.stanford.edu/sitemap.xml")
+    # urls = get_urls("https://example.com/sitemap.xml")
     if len(sys.argv) < 4:
         print("Usage: python crawler.py <sitemap_url> <category> <title>")
         return
