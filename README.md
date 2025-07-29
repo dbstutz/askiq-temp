@@ -82,28 +82,13 @@ The system is designed for cloud deployment with:
 
 ---
 
-## 📊 Performance
-
-- **Response Time**: < 2s average with streaming
-- **Scalability**: Horizontal scaling via containerization
-- **Reliability**: 99.9% uptime with failover paths
-- **Security**: JWT tokens, rate limiting, input validation
-
----
-
 ## 🔧 Environment Variables
 
-```bash
-# Backend (.env)
+```
 OPENAI_API_KEY=your_openai_key
 CHROMADB_API_KEY=your_chromadb_key
 CHROMADB_TENANT=your_tenant
 CHROMADB_DATABASE=your_database
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
-
-# Frontend (.env)
-VITE_FIREBASE_API_KEY=your_firebase_key
-VITE_FIREBASE_AUTH_DOMAIN=your_domain
-VITE_FIREBASE_PROJECT_ID=your_project_id
 ```
